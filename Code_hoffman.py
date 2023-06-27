@@ -15,6 +15,7 @@ class Leaf(namedtuple("Leaf", ["char"])):
 
 def Huffman(data):
     h = []
+    
     for ch, freq in Counter(data).items():
         h.append((freq, len(h), Leaf(ch)))
 
