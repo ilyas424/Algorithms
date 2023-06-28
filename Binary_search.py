@@ -1,33 +1,25 @@
 from random import randint
 
 def binary_search(n: list, value: int)-> int:
+    l = 0
+    r = len(n) - 1
     count = 0
 
-    result = 0
-
-    while len(n) != 1:
+    while l <= r:
         count += 1
 
-        k = len(n) // 2
-        if n[k] == value:
-            result = n[k]
-            break
-        if value > n[k]:
-            n = n[k:]
+        m = l + ((r-l)//2)
+        if n[m] == value:
+            return f'Найденное число: {n[m]}, Индекс: {m + 1}  проходок: {count}'
+        if n[m] > value:
+            r = m - 1
         else:
-            n = n[:k]
+            l = m + 1
+    return "Такого числа нет"
 
-    if n[0] == value:
-        result = n[0]
-
-    if result == value:
-        return f'Найденное число: {result},  проходок: {count}'
-    else:
-        return "Такого числа нет"
         
-data = [i for i in range(-1232, 12123)]
+data = [i for i in range(-1231, 12123)]
 for i in range(10):
     x = randint(-1200,12122)
-    print(x)
     print(binary_search(data, x))
     
